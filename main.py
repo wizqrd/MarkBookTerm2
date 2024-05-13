@@ -6,12 +6,8 @@ def add_new_student(markbook):
     student_firstname = input("Enter the first name: ")
     student_lastname = input('Enter the last name: ')
     markbook[student_id] = {'first_name': student_firstname, 'last_name': student_lastname, 'marks': [], 'grade': 'N/A'}
-'''Add new student'''
 
 def add_marks(markbook):
-    """
-    Add marks for a student.
-    """
     student_id = input("Enter student ID to add marks: ")
     if student_id not in markbook:
         print("Student ID not found.")
@@ -25,9 +21,6 @@ def add_marks(markbook):
     markbook[student_id]['marks'].append(int(mark))
 
 def calculate_overall_grade(markbook):
-    """
-    Calculate and store the overall grade of a student.
-    """
     for student_id, data in markbook.items():
         marks = data['marks']
         if marks:
