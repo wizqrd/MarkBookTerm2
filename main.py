@@ -9,49 +9,6 @@ def add_new_student(markbook):
 '''Add new student'''
 
 def add_marks(markbook):
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''def add_marks(markbook):
     """
     Add marks for a student.
     """
@@ -104,9 +61,6 @@ def display_markbook(markbook):
         print("{:<10} {:<15} {:<15} {:<15} {:<15}".format(student_id, data['first_name'], data['last_name'], marks, data['overall_grade']))
 
 def save_markbook(markbook):
-    """
-    Save the markbook to a file.
-    """
     file_name = input("Enter the name of the file to save the markbook: ")
     try:
         with open(file_name, 'w') as file:
@@ -117,9 +71,6 @@ def save_markbook(markbook):
         print("Error: Unable to save the markbook.")
 
 def load_markbook():
-    """ jki
-    Load the markbook from a file.
-    """
     file_name = input("Enter the name of the file to load the markbook: ")
     markbook = {}
     try:
@@ -160,4 +111,4 @@ def main():
             print("Invalid choice. Please enter a number between 1 and 7.")
 
 if __name__ == "__main__":
-    main()'''
+    main()
