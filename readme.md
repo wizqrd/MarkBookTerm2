@@ -1,5 +1,3 @@
-Here is your task description formatted nicely in a markdown file:
-
 ```markdown
 # Marking/Grading Software Task Description:
 
@@ -42,4 +40,3 @@ Here is your task description formatted nicely in a markdown file:
   - Check if markbook name is valid when loading
 ```
 
-Feel free to use this markdown text for your task description.
