@@ -3,9 +3,9 @@ markbook = {}
 
 
 def addStudent():
-    firstName = input("Enter first name: ")
-    lastName = input("Enter last name: ")
-    studentID = input("Enter student ID (5 digit numeric string): ")
+    firstName = input("Enter first name please: ")
+    lastName = input("Enter last name please: ")
+    studentID = input("Enter student ID (5 digit numeric string): ") 
     if not isValidStudentID(studentID):
         print("Invalid student ID. Please enter a 5 digit numeric string.")
         return
