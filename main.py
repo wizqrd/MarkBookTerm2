@@ -1,6 +1,6 @@
 markbook = {}
 
-def addStudent():
+def addStudent(): # Adds a students firstname, lastname and unique 5 digit student ID
     firstName = input("Enter first name please: ")
     lastName = input("Enter last name please: ")
     studentID = input("Enter student ID (5 digit numeric string): ") 
@@ -12,18 +12,18 @@ def addStudent():
         return
     markbook[studentID] = {
         'firstName': firstName,
-        'lastName': lastName,
+        'lastName': lastName,   
         'marks': [],
         'grade': 'N/A'
     }
-    print("Student added successfully.")
-
+    print("Student added successfully.") # yay
+# Adds a students firstname, lastname and unique 5 digit student ID
 def isValidStudentID(studentID):
-    return len(studentID) == 5 and studentID.isdigit()
-
+    return len(studentID) == 5 and studentID.isdigit() 
+# Checks if length is five, id is digit
 def isValidFilename(filename):
-    return all(not (not char.isalnum() and char != ' ') for char in filename)
-
+    return all(not (not char.isalnum() and char != ' ') for char in filename) 
+# Checks if alphanumeric and if there is a space
 def addMarks():
     studentID = input("Enter student ID: ")
     if studentID not in markbook:
@@ -37,6 +37,9 @@ def addMarks():
     print("Mark added successfully.")
     calculateGrade(studentID)
 
+'''Takes user input (ID) then runs through a loop to check if its a digit, and is 
+between 0 and 100, ending the loop when its correct. Adds marks to Dictionary when
+finished...'''
 def calculateGrade(studentID):
     marks = markbook[studentID]['marks']
     averageMark = sum(marks) / len(marks) if marks else 0
@@ -54,17 +57,19 @@ def calculateGrade(studentID):
         case _:
             grade = 'N/A'
     markbook[studentID]['grade'] = grade
-
+# Uses a math statement to math mark to grade, and stores it in markbook dictionary
 def displayMarkbook():
-    print("{:<10} {:<15} {:<15} {:<20} {:<5}".format('Student ID', 'First Name', 'Last Name', 'Marks', 'Grade'))
+    print("{:<10} {:<15} {:<15} {:<20} {:<5}".format('Student ID', 'First Name', 
+                                                     'Last Name', 'Marks', 'Grade'))
     print('-' * 65)
     for studentID, studentData in markbook.items():
         firstName = studentData['firstName']
         lastName = studentData['lastName']
-        marks = ', '.join(str(mark) for mark in studentData['marks'])
+        marks = ' , '.join(str(mark) for mark in studentData['marks'])
         grade = studentData['grade']
-        print("{:<10} {:<15} {:<15} {:<20} {:<5}".format(studentID, firstName, lastName, marks, grade))
-
+        print("{:<10} {:<15} {:<15} {:<20} {:<5}".format(studentID, firstName, lastName,
+                                                         marks, grade))
+# This shows the markbook dictionary to the console
 def saveMarkbook():
     filename = input("Enter filename to save markbook: ")
     if not isValidFilename(filename):
@@ -74,21 +79,21 @@ def saveMarkbook():
         with open(f"{filename}.txt", 'w') as file:
             for studentID, studentData in markbook.items():
                 file.write(f"{studentID},{studentData['firstName']},{studentData['lastName']},{','.join(str(mark) for mark in studentData['marks'])},{studentData['grade']}\n")
-        print(f"Markbook saved successfully to {filename}.txt")
+        print(f"markbook saved successfully to {filename}.txt")
     except Exception as e:
-        print(f"Error saving markbook: {e}")
+        print(f"Uh-oh, Error saving markbook: {e}")
 
 def loadMarkbook():
     filename = input("Enter filename to load markbook: ")
     if not isValidFilename(filename):
-        print("Invalid filename. Please enter a valid filename.")
+        print("Non-valid filename. Please enter a valid filename.")
         return
     try:
         with open(f"{filename}.txt", 'r') as file:
             markbook.clear()
             for line in file:
-                studentID, firstName, lastName, marksStr, grade = line.strip().split(',')
-                marks = [int(mark) for mark in marksStr.split(',')]
+                studentID, firstName, lastName, marksStr, grade = line.strip().split(' | ')
+                marks = [int(mark) for mark in marksStr.split(' | ')]
                 markbook[studentID] = {
                     'firstName': firstName,
                     'lastName': lastName,
@@ -97,19 +102,20 @@ def loadMarkbook():
                 }
         print(f"Markbook loaded successfully from {filename}.txt")
     except Exception as e:
-        print(f"Error loading markbook: {e}")
-
+        print(f"Oh dear, Error loading markbook: {e}")
+"""This reads the inputted file name, validates the name, clears any of the data and 
+then stores in the markbook dictionary"""
 def exitProgram():
-    print("Exiting program...")
-
+    print("Exiting program, see you soon.")
+# Nice bye bye message.
 while True:
-    print("\nMarkbook Menu:")
+    print("\nMarkbook Hub:")
     print("1. Add a new student")
-    print("2. Add marks for a student")
-    print("3. Display markbook")
-    print("4. Save markbook")
-    print("5. Load markbook")
-    print("6. Exit")
+    print("2. Give marks to a student")
+    print("3. Display the markbook")
+    print("4. Save the markbook")
+    print("5. Load the markbook")
+    print("6. Exit :(")
     choice = input("Enter your choice (1-6): ")
     match choice:
         case '1':
@@ -126,4 +132,12 @@ while True:
             exitProgram()
             break
         case _:
-            print("Invalid choice. Please try again.")
+            print("Womp, Invalid choice. Please try again.")
+# This is the main hub, the user will input the number for their choice.
+
+
+
+# Dev Note-
+# | Not quite completed as i'm still stuck on file manipulation
+# | Missing some organisation, and used outside help for the load and save (Not AI)
+# | Shoutout to Chase for the minimising of functions.
