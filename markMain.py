@@ -1,7 +1,5 @@
 markbook = {}
 
-
-
 def addStudent():
     firstName = input("Enter first name please: ")
     lastName = input("Enter last name please: ")
